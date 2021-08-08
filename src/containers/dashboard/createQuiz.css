@@ -1,0 +1,23 @@
+.upload{
+    border:solid 1px black;
+    width: 8rem;
+    padding: 1rem;
+    background-color: cadetblue;
+}
+.upload:hover{
+    cursor: pointer;
+}
+input{
+    padding: 0.2rem;
+    margin-bottom: 1rem;
+}
+label{
+    padding: 0.2rem
+}
+.submit{
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+}
+.submit:hover{
+    cursor: pointer;
+}

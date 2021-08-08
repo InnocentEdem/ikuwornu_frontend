@@ -27,15 +27,19 @@ class ContestantView extends Component {
                         <div className="whoseturn">
                         <Contestant name = 'Abena'/>
                         </div>
-                        <div className="tools" ><QuizTools/></div>
                         <div> <div className = 'question'>
                             <span>Question : </span>What is the capital city of Japan?<span></span>
                             
                         </div>
-                        <div className= 'answers' >
-                            <div><span>Right Answer : </span>Tokyo<span></span></div>
-                            <div><span>Contestant : </span> <span></span></div>
-
+                        <div className= 'answers' >    
+                             <form onSubmit={this.handleSubmit}>
+                                <label htmlFor='name'>Your Answer</label>  
+                                <br></br>        
+                                <input id= 'name'value={this.state.name} onChange={this.handleChange} />
+                                <br></br>  
+                                <input type="submit" value="Submit" />
+                            </form>
+                                            
                         </div></div>
                     </div>
                     <div> <LeaderBoard/> </div>        

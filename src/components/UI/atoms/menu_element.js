@@ -9,7 +9,8 @@ class Tab extends Component {
     }
     render() { 
         return ( 
-        <div className='tab' onClick= {this.props.handleClick} style={{backgroundColor:this.props.tabColor}}>
+        <div className='tab' onClick= {this.props.handleClick} style={{backgroundColor:this.props.tabColor,
+           textAlign:this.props.align }}>
             {this.props.text}
 
         </div> );

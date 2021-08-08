@@ -7,6 +7,7 @@ import Timer from './components/timer/timer';
 import Navbar from './components/navbar/navbar';
 import QuizOn from './containers/quiz_on/quizOn';
 import ContestantView from './containers/contestant/contestantdash';
+import Dashboard from './containers/dashboard/dashboard';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     // <Tab text="hello" tabColor='Pink'/>
     // <Contestant name = 'Kojo Bonsu'/>
     // <Timer limit="2"/> */}
-    <ContestantView/>
+    <Dashboard/>
     
     </div>
   );
