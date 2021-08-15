@@ -22,10 +22,12 @@ class  QuizOn extends Component {
                     <Contestant name = 'Kwame'/>
                     </div>  
                     <div className="quiz-box">
-                        <div><Timer limit='2' /></div>
+                        <div className='timer' ><Timer limit='2' /></div>
                         <div className="whoseturn">
                         <Contestant name = 'Abena'/>
+                       
                         </div>
+                        
                         <div className="tools" ><QuizTools/></div>
                         <div> <div className = 'question'>
                             <span>Question : </span>What is the capital city of Japan?<span></span>
@@ -37,7 +39,7 @@ class  QuizOn extends Component {
 
                         </div></div>
                     </div>
-                    <div> <LeaderBoard/> </div>        
+                    <div className='leaderboard' > <LeaderBoard/> </div>        
                 </div>
             </div>
          );

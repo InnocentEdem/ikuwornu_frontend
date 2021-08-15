@@ -1,9 +1,0 @@
-.file-load{
-    width: 6rem;
-    padding: 1.5rem;
-    background-color: cadetblue;
-    border: solid 1px black;
-}
-.file-load:hover{
-    cursor: pointer;
-}

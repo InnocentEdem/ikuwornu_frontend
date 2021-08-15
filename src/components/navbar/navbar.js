@@ -12,7 +12,7 @@ class Navbar extends Component {
                     <ul>
                         <li>Home</li>
                         <li>Dashboard</li>
-                        <li>Quiz</li>
+                        <li>Live Quiz</li>
                         <li>Logout</li>
                     </ul>
                 </nav>

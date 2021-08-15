@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/navbar/navbar';
-import Tab from '../../components/UI/atoms/menu_element';
 import CreateQuiz from './createQuiz';
 import Questions from './questions';
+import './dashboard.css'
 
 class Dashboard extends Component {
     constructor(props) {
@@ -12,20 +12,14 @@ class Dashboard extends Component {
     render() { 
         return ( 
             <div>
-                <div className='header' >
-                    <Navbar/>
-                </div>
-                <div className='main'>
-                  <div className='menu'>
-                    <Tab text='Create Quiz' tabColor = 'Blue'/>
-                    <Tab text='Questions' tabColor = 'Blue'/>
-                    <Tab text='Live Quiz' tabColor = 'Blue'/>
-                  </div>
-                  <div className='content'>
-                    <Questions/>
-                  </div> 
+               <div className='Navbar' >
+                <Navbar/>
+               </div>
+               <div className='menu'>
+                 
 
-                </div>
+               </div>
+
             </div>
          );
     }

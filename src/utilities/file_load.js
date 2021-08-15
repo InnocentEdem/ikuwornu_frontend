@@ -21,7 +21,7 @@ class FileLoad extends Component {
                 return (
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {!isDragActive && 'Click / drop a file '}
+                    {!isDragActive && ' '}
                     {isDragActive && !isDragReject && "Drop to load!"}
                     {isDragReject && "File type rejected."}
                     

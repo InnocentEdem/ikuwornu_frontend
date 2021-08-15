@@ -12,11 +12,9 @@ import Dashboard from './containers/dashboard/dashboard';
 
 function App() {
   return (
-     <div>
-    {/* // <Login/>
-    // <Tab text="hello" tabColor='Pink'/>
-    // <Contestant name = 'Kojo Bonsu'/>
-    // <Timer limit="2"/> */}
+     <div className ='App'>
+     {/* <Login/> */}
+     {/* <QuizOn/> */}
     <Dashboard/>
     
     </div>

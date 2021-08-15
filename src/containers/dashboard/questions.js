@@ -1,6 +1,5 @@
 import FileLoad from "../../utilities/file_load";
 import React, { Component } from 'react';
-import './questions.css'
 
 class Questions extends Component {
     constructor(props) {
@@ -12,8 +11,10 @@ class Questions extends Component {
             <div>
                 <label>UPLOAD list of Questions</label>
                <div className='file-load'>
+               
                <FileLoad/>
                </div>
+
             </div>
          );
     }

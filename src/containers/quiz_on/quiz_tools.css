@@ -7,9 +7,24 @@
     
 }
 button{
-    width: 5rem;
-    height:2rem
+    width: 6rem;
+    height:3rem
 }
 button :hover{
         cursor: pointer;
+}
+.quiz-tools>div{
+    box-shadow: #3b5998;
+    padding: 0.8rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+     box-shadow: 0 8px 6px -6px black;
+     border: solid 1px rgba(128, 128, 128, 0.158);
+}
+.quiz-tools>div:hover{
+    background-color:  #3b5998 ;
+    color:white;
 }

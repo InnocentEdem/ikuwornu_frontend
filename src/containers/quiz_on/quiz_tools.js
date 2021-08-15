@@ -10,9 +10,10 @@ class QuizTools extends Component {
     render() { 
         return (  
             <div className='quiz-tools' >
-               <Tab  text = 'Correct' tabColor='Blue'/>
-               <Tab  text = 'Show Answer' tabColor='Blue'/>
-               <Tab  text = 'Question' tabColor='Blue'/>
+              <div>Min Pt</div>
+              <div>Max Pt</div>
+              <div>Show Ans</div>
+              <div>Timer</div>
             </div>
         );
     }

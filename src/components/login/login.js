@@ -31,26 +31,21 @@ class Login extends Component {
       }
      
     render() { 
-        let formType;
-        if (this.state.quizMaster){formType=<QmForm/>}
-            else{formType=<ContestForm/>}
+        
         return ( 
+            <div>
+                 <div className='header' >Quiz Master </div>
             <div className='login'>
-              <div className='events'>
-                 Event Schedule
-                  
-              </div>
-              <div className='login-form'>
-                <div className= 'login-select'>
-                    <div className='role' onClick={this.changeToQm}>Quiz Master</div>
-                    <div className='role' onClick={this.changeToCon}>Contestant</div>
-                </div>
-                <div className="form">{formType}</div>
+               
+              
+                
+                <div className="form"><QmForm/></div>
                  
+            
               </div>
               </div>
          );
-    }
+    } 
 }
  
 export default Login;
