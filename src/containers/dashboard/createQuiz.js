@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../../components/navbar/navbar';
 import FileLoad from '../../utilities/file_load';
 import './createQuiz.css'
 class CreateQuiz extends Component {
@@ -10,33 +11,35 @@ class CreateQuiz extends Component {
     }
     render() { 
         return ( 
-            <form onSubmit={this.handleSubmit}>
-                                <label>UPLOAD Contestants </label>   
-                                <br></br>    
-                                <div className='upload'><FileLoad/></div>
-                                <br></br>  
-                                <label htmlFor='time'>Minutes per Question</label>  
-                                <br></br>        
-                                <input id= 'time'type = "range" step='0.5' value={this.state.name} onChange={this.handleChange} />
-                                <br></br>
-                                <label htmlFor='bTime'>Bonus Question Minutes</label>  
-                                <br></br>        
-                                <input id= 'bTime'type = "range" step='0.5' value={this.state.name} onChange={this.handleChange} />
-                                <br></br>  
-                                <label htmlFor='maxPoints'>Max Points</label>  
-                                <br></br>        
-                                <input id= 'maxPoints'type = "number" value={this.state.name} onChange={this.handleChange} />
+            <div>
+            
+                  
+            <form className='form1' onSubmit={this.handleSubmit}>      
+                                <div className='file-load'>
+                                    <label></label>
+                                    <div className='upload'>
+                                        <i class="fa fa-upload"></i>UPLOAD Contestants<FileLoad/></div>
+                                                                      
+                                </div>
+                                <div></div>
+                                
+                               <div className="input-main">
+                               <label htmlFor='time'>Seconds per Question</label>         
+                                <input id= 'time' type='number' value={this.state.name} onChange={this.handleChange} />
                                 <br></br> 
-                                <label htmlFor='minPoints'>Min Points(Bonus)</label>  
-                                <br></br>        
-                                <input id= 'minPoints'type = "number" value={this.state.name} onChange={this.handleChange} />
+                                <label htmlFor='maxPoints'>Max Point</label>         
+                                <input id= 'maxPoints'type = "number"min='1' max='180' value={this.state.name} onChange={this.handleChange} />
+                                <br></br> 
+                                <label htmlFor='minPoints'>Min Point</label>         
+                                <input id= 'minPoints'type = "number" min='1' value={this.state.name} onChange={this.handleChange} />
                                 <br></br>
-                                <label htmlFor='name'>Number of Questions</label>  
-                                <br></br>        
+                                <label htmlFor='name'>Questions per Contestant</label>         
                                 <input id= 'name'type = "number" value={this.state.name} onChange={this.handleChange} /> 
                                 <br></br>
-                                <input className ='submit'type="submit" value="Create Quiz Session" />
+                                <input className ='submit'type="submit" value="Create Quiz " />
+                               </div>
                             </form> 
+                            </div>
          );
     }
 }

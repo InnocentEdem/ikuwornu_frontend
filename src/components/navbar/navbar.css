@@ -16,6 +16,8 @@ ul li{
 ul li:hover{
     background-color:  #3b5998 ;
     color:white;
+    transition: background-color,color 2s;
+    /* transition: color 2s; */
     
 
 }

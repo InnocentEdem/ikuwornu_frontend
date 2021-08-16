@@ -8,16 +8,22 @@ import Navbar from './components/navbar/navbar';
 import QuizOn from './containers/quiz_on/quizOn';
 import ContestantView from './containers/contestant/contestantdash';
 import Dashboard from './containers/dashboard/dashboard';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 function App() {
   return (
-     <div className ='App'>
-     {/* <Login/> */}
-     {/* <QuizOn/> */}
-    <Dashboard/>
-    
-    </div>
+    <Router>
+      <Switch>
+      <Route path='/'>
+        <Dashboard/>
+      </Route>
+      <Route path='/'>
+        <Dashboard/>
+      </Route>
+      </Switch>
+
+    </Router>
   );
 }
 

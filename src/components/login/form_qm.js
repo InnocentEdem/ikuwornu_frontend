@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import "./form_qm.css"
+import './form_qm.css'
+
 
 class QmForm extends Component {
     constructor(props) {
@@ -17,13 +18,13 @@ class QmForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor='name'>Name</label>  
                 <br></br>        
-                <input className='form-field'  id= 'name'value={this.state.name} onChange={this.handleChange} />
+                <input className='form-fields'  id= 'name'value={this.state.name} onChange={this.handleChange} />
                 <br></br>
                 <label htmlFor='password'>Password</label> 
                 <br></br>         
-                <input className='form-field' type='password' id= 'password' onChange={this.handleChange} /> 
+                <input className='form-fields' type='password' id= 'password' onChange={this.handleChange} /> 
                 <br></br>  
-                <input className='form-field submit' type="submit" value="Submit" />
+                <input className='form-fields submit' type="submit" value="Submit" />
              </form>
          );
     }

@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar/navbar';
 import CreateQuiz from './createQuiz';
 import Questions from './questions';
 import './dashboard.css'
+import QuizOn from '../quiz_on/quizOn';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -15,7 +16,16 @@ class Dashboard extends Component {
                <div className='Navbar' >
                 <Navbar/>
                </div>
-               <div className='menu'>
+               <div className='main'>
+                   <div className='menu'>
+                       <div>Create Quiz</div>
+                       <div>Questions</div>
+                       <div>Live Quiz</div>
+                   </div>
+                   <div className='content'>
+                       <CreateQuiz/>
+                       {/* <Questions/> */}
+                   </div>
                  
 
                </div>
