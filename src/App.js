@@ -10,6 +10,9 @@ import ContestantView from './containers/contestant/contestantdash';
 import Dashboard from './containers/dashboard/dashboard_create';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import DashboardAdmin from './containers/dashboard/dashboard_admin';
+import CreateQuiz from './containers/dashboard/createQuiz';
+import DashboardQuestions from './containers/dashboard/dashboard_question';
+import DashboardCreate from './containers/dashboard/dashboard_create';
 
 
 function App() {
@@ -17,10 +20,19 @@ function App() {
     <Router>
       <Switch>
       <Route path='/'>
+        <DashboardCreate/>
+      </Route>
+      <Route path='/addquestions'>
+       <DashboardQuestions/>
+      </Route>
+      <Route path='/livequiz'>
+       <QuizOn/>
+      </Route>
+      <Route path='/admin_dashboard'>
        <DashboardAdmin/>
       </Route>
-      <Route path='/'>
-        <Dashboard/>
+      <Route path='/login'>
+       <Login/>
       </Route>
       </Switch>
 
