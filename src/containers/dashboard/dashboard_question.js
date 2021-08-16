@@ -5,7 +5,7 @@ import Questions from './questions';
 import './dashboard.css'
 import QuizOn from '../quiz_on/quizOn';
 
-class Dashboard extends Component {
+class DashboardQuestions extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -23,8 +23,7 @@ class Dashboard extends Component {
                        <div>Live Quiz</div>
                    </div>
                    <div className='content'>
-                       <CreateQuiz/>
-                       {/* <Questions/> */}
+                       <Questions/>
                    </div>
                  
 
@@ -35,4 +34,4 @@ class Dashboard extends Component {
     }
 }
  
-export default Dashboard;
+export default DashboardQuestions;

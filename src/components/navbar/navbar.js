@@ -10,8 +10,8 @@ class Navbar extends Component {
         return ( 
                 <nav>
                     <ul>
-                        <li>Home</li>
-                        <li>Dashboard</li>
+                        <li>Load Questions</li>
+                        <li>Create Quiz</li>
                         <li>Live Quiz</li>
                         <li>Logout</li>
                     </ul>

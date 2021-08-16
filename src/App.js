@@ -7,8 +7,9 @@ import Timer from './components/timer/timer';
 import Navbar from './components/navbar/navbar';
 import QuizOn from './containers/quiz_on/quizOn';
 import ContestantView from './containers/contestant/contestantdash';
-import Dashboard from './containers/dashboard/dashboard';
+import Dashboard from './containers/dashboard/dashboard_create';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import DashboardAdmin from './containers/dashboard/dashboard_admin';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <Router>
       <Switch>
       <Route path='/'>
-        <Dashboard/>
+       <DashboardAdmin/>
       </Route>
       <Route path='/'>
         <Dashboard/>

@@ -1,0 +1,10 @@
+input{
+    width: 10rem;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+#submit{
+    background-color: black;
+}
