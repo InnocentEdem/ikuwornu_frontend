@@ -1,21 +1,37 @@
-import FileLoad from "../../utilities/file_load";
+
 import React, { Component } from 'react';
 import "./questions.css"
+import {ExcelRenderer} from 'react-excel-renderer';
 
 class Questions extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
-    render() { 
+    fileHandler = (event) => {
+        let fileObj = event.target.files[0];
+      //just pass the fileObj as parameter
+        ExcelRenderer(fileObj, (err, resp) => {
+          if(err){
+            console.log(err);            
+          }
+          else{
+            this.setState({
+              cols: resp.cols,
+              rows: resp.rows
+            });
+          }
+        }); 
+    }             
+    render() {
+         
         return ( 
             <div>
                 <div className='fa title'>
-                    Upload Questions
-                    <div className='file-load'>
-               <i class="fa fa-upload"></i>
-               
-               </div>
+                   
+                    <label> Upload Questions</label>
+                                <input type ='file' onChange={this.fileHandler} />
+                                <br></br>
                     </div>
                 
                 <div>

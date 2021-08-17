@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <Switch>
-      <Route path='/'>
+      <Route exact path="/">
         <DashboardCreate/>
       </Route>
       <Route path='/addquestions'>
@@ -35,7 +35,6 @@ function App() {
        <Login/>
       </Route>
       </Switch>
-
     </Router>
   );
 }

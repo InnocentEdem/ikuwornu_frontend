@@ -5,6 +5,7 @@ ul li{
     margin:0.5rem;
     border-radius: 5px;
     color:  #3b5998 ;
+    text-decoration: none;
     cursor: pointer;
     box-shadow: #3b5998;
     -webkit-box-shadow: 0 8px 6px -6px black;

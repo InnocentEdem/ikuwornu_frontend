@@ -1,8 +1,4 @@
-.upload{
-    width: 8rem;
-    padding: 1rem;
-    float: right;
-}
+
 
 .form1{
     height: 100vh;
@@ -13,8 +9,8 @@
 .input-main{
     text-align: right;
 }
-.upload:hover{
-    cursor: pointer;
+.file-load{
+  float: right;
 }
 input{
     padding: 0.2rem;

@@ -8,7 +8,9 @@ import LeaderBoard from './leaderboard';
 class  QuizOn extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+
+         }
     }
     render() { 
         return ( 
@@ -22,7 +24,7 @@ class  QuizOn extends Component {
                     <Contestant name = 'Kwame'/>
                     </div>  
                     <div className="quiz-box">
-                        <div className='timer' ><Timer limit='2' /></div>
+                        <div className='timer' ><Timer limit='1' /></div>
                         <div className="whoseturn">
                         <Contestant name = 'Abena'/>
                        
