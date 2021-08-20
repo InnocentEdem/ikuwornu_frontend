@@ -4,8 +4,7 @@ import './quizOn.css'
 import Contestant from '../../components/contestant/contestant';
 import Timer from '../../components/timer/timer';
 import QuizTools from './quiz_tools';
-import LeaderBoard from './leaderboard';
-
+import qonQuestions from '../qonQuestions';
 class  QuizOn extends Component {
     constructor(props) {
         super(props);    
@@ -13,29 +12,57 @@ class  QuizOn extends Component {
          localStorage.setItem('newQuiz',quizData);
          const newQuiz = JSON.parse(localStorage.getItem('newQuiz'));
          let initialScores = newQuiz.contestants.map(e=>[e,0]);
-         console.log(initialScores)
-         this.state = {
+          const min = newQuiz.min_question_point;
+          const maxim =  newQuiz.max_question_point;
+          const num =  newQuiz.number_of_questions;
+          const time = newQuiz.time_per_question;
+          this.state = {
             scores:initialScores,
             max:initialScores.length,
             newQuiz,
             current:0 ,
-            timer:false          
+            timer:false,
+            min,
+            maxim,
+            num,
+            time,
+            questionTracker:[],         
          }      
-         this.updateScore=this.updateScore.bind(this);
+         this.handleUpdate=this.handleUpdate.bind(this)
      }
-    
-    componentDidMount(){
-
-    }
-    
-    updateScore(score){
-        let newscore=this.state.scores[this.state.current][1]+score      
+    handleUpdate(e){
+        let target=e.target;
         this.setState({
-            scores:newscore
-        });
-        localStorage.setItem('scores',JSON.stringify(this.state.scores));
+           target
+        })
+       if(e==="minpt"){
+            let prev=[...this.score];
+            prev[this.current] +=this.min;
+       }else if(e==="maxpt"){
+            let prev=[...this.score];
+            prev[this.current] +=this.maxim;
+       }else if(e==="timer"){
+           
+       }else if(e==="next"){
+            let prev=[...this.score];
+            prev[this.current] +=0;
+       }else if(e==="show"){
+            
+       }
+   }
+   questionHandler(){
+       let random ;
+       while(!this.state.questionTracker.includes(random)){
+        random= Math.floor(Math.random() * (this.state.num * this.state.contestants.length)) + 1;
+       }
+       this.setState({
+           questionTracker:[...this.state.questionTracker,random]
+       })
+      
+   }
+    handleScores(score){
         if (this.state.current<this.state.max-1){
-             this.setState({
+            this.setState({
                 current:this.state.current+1
             })
         }else{
@@ -44,12 +71,12 @@ class  QuizOn extends Component {
         })
          }
     }
-    
-    
+     
     render() {
-        let person=<Contestant name={this.state.scores[this.state.current][0]}
-        score={this.state.scores[this.state.current][1]}/>
-
+ 
+        let person=<Contestant name={this.state.scores[this.state.current]}
+        score={this.state.scores}/>
+    
         return ( 
             <div>
                 <div className='header' >
@@ -58,30 +85,26 @@ class  QuizOn extends Component {
                 <div className="main">
                     <div className="contestants" >
                         {this.state.scores.map((e,i)=><Contestant 
-                        name={this.state.scores[i][0]}
-                        score={this.state.scores[i][1]} key={i.toString()} /> )}                 
+                        name={this.state.scores[i][0] }
+                        score={this.state.scores[i][1] } key={i.toString()} /> )}                 
                     </div>   
                     <div className="quiz-box">
                         <div className='timer' ><Timer limit='1' /></div>
                         <div className="whoseturn">
-                        {/* <Contestant name = 'Abena'/> */}
                         {person}
-                       
+              
                         </div>
                         
-                        <div className="tools" ><QuizTools updateScore={this.updateScore}
-                        min={this.state.newQuiz.min_question_point} max={this.state.newQuiz.max_question_point}/></div>
-                        <div> <div className = 'question'>
-                            <span>Question : </span>What is the capital city of Japan?<span></span>
+                        <div className="tools" ><QuizTools scores={this.state.scores}
+                        handleUpdate={this.handleUpdate}/></div>
+                        <div>
+                             <div className = 'question'>
+                            <span>Question : </span><qonQuestions questionTracker={this.state.questionTracker[-1 ]}/><span></span>
                             
                         </div>
-                        <div className= 'answers' >
-                            <div><span>Right Answer : </span>Tokyo<span></span></div>
-                            
-
-                        </div></div>
+                       </div>
                     </div>
-                    <div className='leaderboard' > <LeaderBoard/> </div>        
+                           
                 </div>
             </div>
          );

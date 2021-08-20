@@ -6,13 +6,13 @@
 }
 .main{
     display: grid;
-    width: 100%;
+    width: 95%;
     grid-template: 1fr /1fr 1fr 1fr;
     grid-auto-rows: 1fr;
     grid-gap:1rem 1rem;
 }
 .quiz-box{
-    grid-area: 1/2/span 1/span 1;
+    grid-area: 1/2/span 2/span 2;
     display: grid;
     grid-template: 2rem 1fr 4rem  1fr/1fr  ;
     box-shadow: #3b5998;
@@ -28,7 +28,7 @@
 
 .contestants{
     display: grid;
-    grid-template: 1fr/repeat(2,1fr);
+    grid-template: 1fr/repeat(3,1fr);
     grid-auto-rows: 1fr;
     margin-left: 1rem;
     box-shadow: #3b5998;
@@ -54,7 +54,7 @@
 }
 .leaderboard{
     box-shadow: #3b5998;
-    grid-area: 1/3/span 1/span 1;
+   
     -webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
      box-shadow: 0 8px 6px -6px black;
