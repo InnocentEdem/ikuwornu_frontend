@@ -3,7 +3,8 @@
 import React,{Component} from 'react';
 import login from './login.css';
 import QmForm from './form_qm';
-import ContestForm from './form_contest';
+
+import axios from 'axios';
 
 class Login extends Component {
 
@@ -16,19 +17,23 @@ class Login extends Component {
             quizMaster:true,
             contestant:false
         }
-        this.changeToQm=this.changeToQm.bind(this);
-        this.changeToCon=this.changeToCon.bind(this);
+       this.onSubmitHandler=this.onSubmitHandler.bind(this);
 
     }
-    changeToCon(){
-       
-        const newState=!this.contestant; 
-        this.setState({quizMaster:!newState,contestant:newState})
-    }
-    changeToQm(){ 
-            const newState=!this.quizMaster  
-            this.setState({quizMaster:newState,contestant:!newState})
+  
+    onSubmitHandler(username,password){
+            
+        const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    
+    const url = 'http://localhost:4000/api/login'
+    
+    axios.post(url, {
+      headers: {
+        'Authorization': `Basic ${token}`
       }
+    }).then()
+    }
+  
      
     render() { 
         

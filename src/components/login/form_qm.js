@@ -13,6 +13,7 @@ class QmForm extends Component {
        if(tag==='name'){this.setState({name:tag.value})}
 
     }
+   
     render() { 
         return ( 
             <form onSubmit={this.handleSubmit}>

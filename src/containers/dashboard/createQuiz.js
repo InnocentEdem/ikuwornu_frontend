@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './createQuiz.css';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
-import {ExcelRenderer, OutTable} from 'react-excel-renderer';
+import {ExcelRenderer, } from 'react-excel-renderer';
 class CreateQuiz extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            time:0, maxpts:0, minpts:0, NumQ:0
+            time:0, maxpts:0, minpts:0, numQ:0
          }
          this.handleChange=this.handleChange.bind(this);
          this.handleSubmit=this.handleSubmit.bind(this);
@@ -15,40 +14,42 @@ class CreateQuiz extends Component {
 
     handleChange(e){
         const target=e.target;
+        console.log(e);
         this.setState({
-        [target.name]:[target.value]
+        [target.id]:[target.value]
         })
     }
-    handleSubmit(){
-        axios({
-            method: 'post',
-            url: 'localhost:',
-            data: {
-              date_created: this.date_created.now(),
-              max_question_point: this.maxpts,
-              min_question_point: this.minpts,
-              number_of_questions:this.NumQ,
-              time_per_question:this.time
+    handleSubmit(e){
+     
+      e.preventDefault();
+        // axios({
+        //     method: 'post',
+        //     url: 'localhost:',
+        //     data: {
+        //       date_created: this.date_created.now(),
+        //       max_question_point: this.maxpts,
+        //       min_question_point: this.minpts,
+        //       number_of_questions:this.NumQ,
+        //       time_per_question:this.time
 
-            },
-            headers: {'Authorization': 'Bearer ...'}
-          });
+        //     },
+        //     headers: {'Authorization': 'Bearer ...'}
+        //   });
+
           const newQuiz={
-            date_created: this.date_created.now(),
-            max_question_point: this.maxpts,
-            min_question_point: this.minpts,
-            number_of_questions:this.NumQ,
-            time_per_question:this.time,
-            contestants:[this.cols,this.rows]
+            date_created: Date.now(),
+            max_question_point: this.state.maxpts,
+            min_question_point: this.state.minpts,
+            number_of_questions:this.state.numQ,
+            time_per_question:this.state.time,
+            contestants:this.state.contestants
           }
-          localStorage.setItem('newQuiz',JSON.stringify(newQuiz));
-          this.redirectHandler()
+          this.props.handleChildData(newQuiz);
 
     }
-        redirectHandler() {      
-            return  <Redirect  to="/livequiz" />   
-     }
+      
      fileHandler = (event) => {
+      
         let fileObj = event.target.files[0];
       //just pass the fileObj as parameter
         ExcelRenderer(fileObj, (err, resp) => {
@@ -56,9 +57,13 @@ class CreateQuiz extends Component {
             console.log(err);            
           }
           else{
-            this.setState({
-              cols: resp.cols,
-              rows: resp.rows
+            let contArray=[]; 
+            resp.rows.forEach(e=>{
+              e.forEach(f=>contArray.push(f))
+            });
+            
+            this.setState({             
+              contestants: contArray
             });
           }
         });               
@@ -68,24 +73,22 @@ class CreateQuiz extends Component {
     render() { 
         return ( 
             <div>
-                         
-            <form className='form1' onSubmit={this.handleSubmit}>      
-                                
+            <form className='form1' onSubmit={this.handleSubmit}  >                        
                                <div className="input-main">
                                <label>UPLOAD Contestants</label>
-                                <input type ='file' onChange={this.fileHandler} />
+                                <input type ='file' onChange={this.fileHandler} required/>
                                 <br></br>
                                <label htmlFor='time'>Seconds per Question</label>         
-                                <input id= 'time' type='number' value={this.state.time} onChange={this.handleChangea} />
+                                <input id= 'time' type='number' value={this.state.time} onChange={this.handleChange} required/>
                                 <br></br> 
-                                <label htmlFor='maxPoints'>Max Point</label>         
-                                <input id= 'maxPoints'type = "number"min='1' max='180' value={this.state.maxpts} onChange={this.handleChange} />
+                                <label htmlFor='maxpts'>Max Point</label>         
+                                <input id= 'maxpts'type = "number"min='1' max='180' value={this.state.maxpts} onChange={this.handleChange} required />
                                 <br></br> 
-                                <label htmlFor='minPoints'>Min Point</label>         
-                                <input id= 'minPoints'type = "number" min='1' value={this.state.minpts} onChange={this.handleChange} />
+                                <label htmlFor='minpts'>Min Point</label>         
+                                <input id= 'minpts'type = "number" min='1' value={this.state.minpts} onChange={this.handleChange} required/>
                                 <br></br>
-                                <label htmlFor='name'>Questions per Contestant</label>         
-                                <input id= 'name'type = "number" value={this.state.NumQ} onChange={this.handleChange} /> 
+                                <label htmlFor='quesPer'>Questions per Contestant</label>         
+                                <input id= 'numQ'type = "number" min='1' value={this.state.numQ} onChange={this.handleChange} required /> 
                                 <br></br>
                                 <input className ='submit'type="submit" value="Create Quiz " />
                                </div>

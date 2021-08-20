@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/navbar/navbar';
 import CreateQuiz from './createQuiz';
-import Questions from './questions';
 import './dashboard.css'
-import QuizOn from '../quiz_on/quizOn';
 import {Link} from 'react-router-dom'
 import './dashboard.css'
+import ConfirmOrCancel from './confirm';
 
 
 class DashboardCreate extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {
+            enterDetails:true,        
+          }
+          this.handleChildData=this.handleChildData.bind(this)
+    }
+    handleChildData(newQuiz){
+        localStorage.setItem("tempQuiz",JSON.stringify(newQuiz))
+        this.setState({
+            newQuiz,
+            enterDetails:false,
+        })
     }
     render() { 
+        let page;
+        if( this.state.enterDetails){
+            page= <CreateQuiz handleChildData={this.handleChildData}/>}
+             else {
+                 page = <ConfirmOrCancel newQuiz={JSON.parse(localStorage.getItem('tempQuiz'))}/>
+                 console.log('confirmOrCancel called');
+                }
         return ( 
             <div>
                <div className='Navbar' >
@@ -27,8 +43,7 @@ class DashboardCreate extends Component {
                        <div><Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link></div>
                    </div>
                    <div className='content'>
-                       <CreateQuiz/>
-                      
+                      {page}         
                    </div>
                    </div>
                    

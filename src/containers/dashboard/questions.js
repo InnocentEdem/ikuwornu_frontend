@@ -8,7 +8,7 @@ class Questions extends Component {
         super(props);
         this.state = {  }
     }
-    fileHandler = (event) => {
+    fileHandler (event){
         let fileObj = event.target.files[0];
       //just pass the fileObj as parameter
         ExcelRenderer(fileObj, (err, resp) => {
@@ -27,12 +27,14 @@ class Questions extends Component {
          
         return ( 
             <div>
-                <div className='fa title'>
+                <form onSubmit>
+                    <div className='questions' >Load Questions</div>
+                  <input type ='file' onChange={this.fileHandler} />
+                  <br></br>
                    
-                    <label> Upload Questions</label>
-                                <input type ='file' onChange={this.fileHandler} />
-                                <br></br>
-                    </div>
+                   <input type = 'Submit'/>
+
+                </form>
                 
                 <div>
                 

@@ -1,0 +1,34 @@
+
+*{
+  
+}
+.links{
+    display: inline-block;
+    box-shadow: #3b5998;
+    padding: 0.8rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+     box-shadow: 0 8px 6px -6px black;
+     border: solid 1px rgba(128, 128, 128, 0.158);
+     background-color:#3b589841 ;
+}
+table{
+    background-color:  rgba(219, 19, 19, 0.021);
+    border:solid 1px black ;
+    text-align: left;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 5px;
+}
+.linksp{
+    text-align: center;
+}
+.content{ 
+    text-align: center;
+}
+    tr{
+        padding: 1rem;
+    }

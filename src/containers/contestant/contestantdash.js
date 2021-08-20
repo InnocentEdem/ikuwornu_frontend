@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Contestant from '../../components/contestant/contestant';
 import Navbar from '../../components/navbar/navbar';
 import Timer from '../../components/timer/timer';
-import QuizTools from '../quiz_on/quiz_tools';
 import LeaderBoard from '../quiz_on/leaderboard';
 import "./contestantdash.css"
 

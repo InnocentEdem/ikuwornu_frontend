@@ -10,9 +10,10 @@ class QuizTools extends Component {
     render() { 
         return (  
             <div className='quiz-tools' >
-              <div>Min Pt</div>
-              <div>Max Pt</div>
+              <div onClick={this.props.updateScore()}>Min Pt</div>
+              <div onClick={this.props.updateScore()}>Max Pt</div>
               <div>Show Ans</div>
+              <div>Next Question</div>
               <div>Timer</div>
             </div>
         );
