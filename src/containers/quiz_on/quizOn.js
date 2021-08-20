@@ -26,7 +26,9 @@ class  QuizOn extends Component {
             maxim,
             num,
             time,
-            questionTracker:[],         
+            questionTracker:[], 
+            onTimer:false,
+            newQuestion:true        
          }      
          this.handleUpdate=this.handleUpdate.bind(this)
      }
@@ -36,16 +38,20 @@ class  QuizOn extends Component {
            target
         })
        if(e==="minpt"){
-            let prev=[...this.score];
+            let prev=[...this.scores];
             prev[this.current] +=this.min;
        }else if(e==="maxpt"){
-            let prev=[...this.score];
+            let prev=[...this.scores];
             prev[this.current] +=this.maxim;
        }else if(e==="timer"){
+           this.setState({onTimer:false})
+           this.setState({onTimer:true})
            
        }else if(e==="next"){
-            let prev=[...this.score];
-            prev[this.current] +=0;
+           this.questionHandler()
+            this.setState({newQuestion:false})
+            this.setState({newQuestion:true})
+           
        }else if(e==="show"){
             
        }
@@ -76,6 +82,7 @@ class  QuizOn extends Component {
  
         let person=<Contestant name={this.state.scores[this.state.current]}
         score={this.state.scores}/>
+
     
         return ( 
             <div>

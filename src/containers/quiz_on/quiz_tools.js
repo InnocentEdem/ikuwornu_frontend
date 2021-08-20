@@ -1,4 +1,4 @@
-import Tab from "../../components/UI/atoms/menu_element";
+
 import React, { Component } from 'react';
 import './quiz_tools.css'
 

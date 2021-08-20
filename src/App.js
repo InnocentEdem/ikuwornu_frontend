@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import DashboardAdmin from './containers/dashboard/dashboard_admin';
 import DashboardQuestions from './containers/dashboard/dashboard_question';
 import DashboardCreate from './containers/dashboard/dashboard_create';
-import users from './users/users';
+
 
 
 
@@ -16,27 +16,19 @@ import users from './users/users';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = { authenticated:false }
   }
   
   render() { 
     return (
       <Router>
         <Switch>
-        <Route exact path="/">
-          <DashboardCreate/>
-        </Route>
-        <Route path='/addquestions'>
-         <DashboardQuestions/>
-        </Route>
-        <Route path='/livequiz'>
-         <QuizOn/>
-        </Route>
-        <Route path='/admin_dashboard'>
-         <DashboardAdmin/>
-        </Route>
+      <Route exact path="/" >{this.state.authenticated?<DashboardCreate/>:<Login/>}</Route>
+        <Route exact path="/addquestions" >{this.state.authenticated?<DashboardQuestions/>:<Login/>} </Route>
+        <Route exact path="/livequiz">{this.state.authenticated?<QuizOn/>:<Login/>}</Route>
+        <Route exact path="/admin_dashboard">{this.state.authenticated?<DashboardAdmin/>:<Login/>}</Route>
         <Route path='/login'>
-         <Login/>
+        <Login/>
         </Route>
         </Switch>
       </Router>
