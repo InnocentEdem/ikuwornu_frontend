@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+Quizmaster App is designed for quizmasters. it helps automate the process of timekeeping, question selection, and score table updates.
+This program is written with React.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
