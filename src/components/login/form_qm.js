@@ -1,27 +1,39 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import './form_qm.css'
-
 
 class QmForm extends Component {
     constructor(props) {
         super(props);
         this.state = { }
         this.handleChange=this.handleChange.bind(this)
-        this.handleClick=this.handleClick.bind(this)
+        this.handleSubmit=this.handleSubmit.bind(this)
     }
     handleChange(event){
         let tag=event.target;
         this.setState({[tag.id]:[tag.value]})
+    } 
 
+    handleSubmit(e){
+        let name =this.state.name[0];
+        let pwd = this.state.password[0];
+        console.log(name,pwd)
+        axios({
+            method: 'post',
+            url: 'http://localhost:3000/api/login',
+            data: {
+              email: name,
+              password: pwd
+            },
+            headers: {'Authorization': 'Bearer ...'}
+          }).then(
+              resp=>{ this.props.jwtHandler(resp.data)   }  )
+              .catch(e=> console.log(e))
+        e.preventDefault()
     }
-    handleClick(e){
-        let target=e.target.id;
-        console.log(target)
-        
-    }
-    
-   
-    render() { 
+
+    render() {
+      
         return ( 
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor='name'>Name</label>  

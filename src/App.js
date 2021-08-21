@@ -8,27 +8,30 @@ import DashboardAdmin from './containers/dashboard/dashboard_admin';
 import DashboardQuestions from './containers/dashboard/dashboard_question';
 import DashboardCreate from './containers/dashboard/dashboard_create';
 
-
-
-
-
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { authenticated:false }
+    this.authorization=this.authorization.bind(this)
   }
-  
-  render() { 
+   authorization(){
+    this.setState({
+      authenticated:true
+    })
+   }
+   
+  render() {
+
+    
     return (
       <Router>
         <Switch>
-      <Route exact path="/" >{this.state.authenticated?<DashboardCreate/>:<Login/>}</Route>
+      <Route exact path="/" >{this.state.authenticated?<DashboardCreate/>:<Login  authorization={this.authorization}/>}</Route>
         <Route exact path="/addquestions" >{this.state.authenticated?<DashboardQuestions/>:<Login/>} </Route>
         <Route exact path="/livequiz">{this.state.authenticated?<QuizOn/>:<Login/>}</Route>
         <Route exact path="/admin_dashboard">{this.state.authenticated?<DashboardAdmin/>:<Login/>}</Route>
         <Route path='/login'>
-        <Login/>
+        <Login authorization={this.authorization}></Login>
         </Route>
         </Switch>
       </Router>

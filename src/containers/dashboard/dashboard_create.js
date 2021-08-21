@@ -39,7 +39,7 @@ class DashboardCreate extends Component {
                    <div className='menu'>
                    <div><Link to ='/' style={{ textDecoration: "none",color:"inherit" }}>Create Quiz</Link></div>
                        <div><Link to ='/addquestions' style={{ textDecoration: "none",color:"inherit" }}>Questions</Link></div>
-                       <div><Link to ='/livequiz' style={{ textDecoration: "none",color:"inherit" }}>Live Quiz</Link></div>
+                      
                        <div><Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link></div>
                    </div>
                    <div className='content'>

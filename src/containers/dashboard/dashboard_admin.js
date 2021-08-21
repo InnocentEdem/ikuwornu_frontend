@@ -24,6 +24,10 @@ class DashboardAdmin extends Component {
  
     }
     render() { 
+        let admin;
+        if(JSON.parse(localStorage.getItem('userData')).isAdmin===true){
+        admin=<Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link>
+        }
         return ( 
             <div>
                <div className='Navbar' >
@@ -33,8 +37,8 @@ class DashboardAdmin extends Component {
                    <div className='menu'>
                    <div><Link to ='/' style={{ textDecoration: "none",color:"inherit" }}>Create Quiz</Link></div>
                        <div><Link to ='/addquestions' style={{ textDecoration: "none",color:"inherit" }}>Questions</Link></div>
-                       <div><Link to ='/livequiz' style={{ textDecoration: "none",color:"inherit" }}>Live Quiz</Link></div>
-                       <div><Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link></div>
+    
+                       <div>{admin}</div>
                    </div>
                    <div className='content'> 
                          <form className='form' >
