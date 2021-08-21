@@ -19,6 +19,8 @@ class DashboardQuestions extends Component {
             console.log(err);            
           }
           else{
+            localStorage.setItem(JSON.stringify(resp))
+            console.log(resp.cols)
             this.setState({
               cols: resp.cols,
               rows: resp.rows
