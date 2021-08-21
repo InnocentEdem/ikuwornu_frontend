@@ -4,6 +4,7 @@ import './dashboard.css'
 import'./dashboard_admin.css';
 import {Link} from 'react-router-dom';
 import './dashboard.css';
+import axios from 'axios';
 
 class DashboardAdmin extends Component {
     constructor(props) {
@@ -16,8 +17,24 @@ class DashboardAdmin extends Component {
           this.handleSubmit=this.handleSubmit.bind(this);
     }
     handleSubmit(e){
-       
+        let name =this.state.username[0];
+        let pwd = this.state.password[0];
+        let token=JSON.parse(localStorage.getItem('userData').token)
+      
+        axios({
+            method: 'post',
+            url: 'http://localhost:3000/api/login/register',
+            data: {
+              email: name,
+              password: pwd
+            },
+            headers: {'Authorization': `Bearer  ${token}`}
+          }).then(
+              resp=>{ console.log(resp.data)   }  )
+              .catch(e=> console.log(e))
+        e.preventDefault()
     }
+
     handleChange(e){
         const target=e.target;
         this.setState({[target.id]:[target.value]})
@@ -41,12 +58,12 @@ class DashboardAdmin extends Component {
                        <div>{admin}</div>
                    </div>
                    <div className='content'> 
-                         <form className='form' >
+                         <form className='form' onSubmit={this.handleSubmit} >
                          <label htmlFor='Username'>Username</label>         
-                                <input id= 'username'type =' text' />
+                                <input id= 'username'type =' text' onChange={this.handleChange}/>
                                
                                 <label htmlFor='minPoints'>Password</label>         
-                                <input id= 'password'type = 'password' />
+                                <input id= 'password'type = 'password' onChange={this.handleChange}/>
                                 
                                 <input id='submit'type = 'Submit' />
                                 <br></br>

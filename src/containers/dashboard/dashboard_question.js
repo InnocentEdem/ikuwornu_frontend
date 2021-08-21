@@ -4,7 +4,7 @@ import Questions from './questions';
 import './dashboard.css'
 import {Link} from 'react-router-dom';
 import './dashboard.css'
-import {ExcelRenderer, OutTable} from 'react-excel-renderer';
+import {ExcelRenderer} from 'react-excel-renderer';
 
 class DashboardQuestions extends Component {
     constructor(props) {
