@@ -17,6 +17,15 @@ class DashboardCreate extends Component {
     }
     handleChildData(newQuiz){
         localStorage.setItem("tempQuiz",JSON.stringify(newQuiz))
+        if(localStorage.getItem('records')){
+            let temp=JSON.parse(localStorage.getItem('records'));
+            temp.push(newQuiz);
+            localStorage.setItem('records',JSON.stringify(temp));
+        }else{
+            let temp=[];
+            temp.push(newQuiz);
+            localStorage.setItem('records',JSON.stringify(temp))
+        }
         this.setState({
             newQuiz,
             enterDetails:false,
@@ -38,8 +47,7 @@ class DashboardCreate extends Component {
                <div className='main'>
                    <div className='menu'>
                    <div><Link to ='/' style={{ textDecoration: "none",color:"inherit" }}>Create Quiz</Link></div>
-                       <div><Link to ='/addquestions' style={{ textDecoration: "none",color:"inherit" }}>Questions</Link></div>
-                      
+                       <div><Link to ='/schedule' style={{ textDecoration: "none",color:"inherit" }}>Schedule</Link></div> 
                        <div><Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link></div>
                    </div>
                    <div className='content'>

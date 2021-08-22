@@ -19,7 +19,7 @@ class Contestant extends Component {
             <div className="person">
                 <div><img src={imageSrc} alt='Contestant IMG'/></div>
                 <div >{this.props.name}</div>
-                <div>Score : {this.state.score}</div> 
+                <div>Score : {this.props.score}</div> 
                         
             </div>
          );

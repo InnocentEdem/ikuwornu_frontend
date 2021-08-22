@@ -8,3 +8,7 @@ input{
 #submit{
     background-color: black;
 }
+
+#password,#username{
+    width: 15rem;
+}

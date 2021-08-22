@@ -42,14 +42,14 @@ class CreateQuiz extends Component {
             min_question_point: this.state.minpts,
             number_of_questions:this.state.numQ,
             time_per_question:this.state.time,
-            contestants:this.state.contestants
+            contestants:this.state.contestants,
+            questions:this.state.questions
           }
           this.props.handleChildData(newQuiz);
 
     }
       
-     fileHandler = (event) => {
-      
+     fileHandler1 = (event) => {  
         let fileObj = event.target.files[0];
       //just pass the fileObj as parameter
         ExcelRenderer(fileObj, (err, resp) => {
@@ -61,22 +61,45 @@ class CreateQuiz extends Component {
             resp.rows.forEach(e=>{
               e.forEach(f=>contArray.push(f))
             });
-            
-            this.setState({             
-              contestants: contArray
-            });
+              localStorage.setItem("contestants",contArray)
+              this.setState({             
+                contestants: contArray
+              });
+            }
+          });                  
           }
-        });               
-        
-        }
-    
+
+        fileHandler2 = (event) => { 
+          let fileObj = event.target.files[0];
+        //just pass the fileObj as parameter
+          ExcelRenderer(fileObj, (err, resp) => {
+            if(err){
+              console.log(err);            
+            }
+            else{
+              let questArray=[]; 
+              resp.rows.forEach(e=>{
+                e.forEach(f=>questArray.push(f))
+              });
+              localStorage.setItem('questions',questArray)
+              this.setState({             
+                questions: questArray
+              });
+            }
+          });               
+          
+          }
+
     render() { 
         return ( 
             <div>
             <form className='form1' onSubmit={this.handleSubmit}  >                        
                                <div className="input-main">
                                <label>UPLOAD Contestants</label>
-                                <input type ='file' onChange={this.fileHandler} required/>
+                                <input type ='file' onChange={this.fileHandler1} required/>
+                                <br></br>
+                                <label>UPLOAD Questions</label>
+                                <input type ='file' onChange={this.fileHandler2} required/>
                                 <br></br>
                                <label htmlFor='time'>Seconds per Question</label>         
                                 <input id= 'time' type='number' value={this.state.time} onChange={this.handleChange} required/>

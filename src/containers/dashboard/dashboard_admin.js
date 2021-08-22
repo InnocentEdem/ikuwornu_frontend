@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/navbar/navbar';
-import './dashboard.css'
 import'./dashboard_admin.css';
 import {Link} from 'react-router-dom';
-import './dashboard.css';
+import './dashboard_admin.css';
 import axios from 'axios';
 
 class DashboardAdmin extends Component {
@@ -20,19 +19,7 @@ class DashboardAdmin extends Component {
         let name =this.state.username[0];
         let pwd = this.state.password[0];
         let token=JSON.parse(localStorage.getItem('userData').token)
-      
-        axios({
-            method: 'post',
-            url: 'http://localhost:3000/api/login/register',
-            data: {
-              email: name,
-              password: pwd
-            },
-            headers: {'Authorization': `Bearer  ${token}`}
-          }).then(
-              resp=>{ console.log(resp.data)   }  )
-              .catch(e=> console.log(e))
-        e.preventDefault()
+        localStorage.setItem('newQuizMaster',[name,pwd,token])
     }
 
     handleChange(e){
@@ -48,16 +35,15 @@ class DashboardAdmin extends Component {
         return ( 
             <div>
                <div className='Navbar' >
-                <Navbar/>
+                    <Navbar/>
                </div>
                <div className='main'>
                    <div className='menu'>
-                   <div><Link to ='/' style={{ textDecoration: "none",color:"inherit" }}>Create Quiz</Link></div>
-                       <div><Link to ='/addquestions' style={{ textDecoration: "none",color:"inherit" }}>Questions</Link></div>
-    
-                       <div>{admin}</div>
-                   </div>
-                   <div className='content'> 
+                    <div><Link to ='/' style={{ textDecoration: "none",color:"inherit" }}>Create Quiz</Link></div>
+                    <div><Link to ='/schedule' style={{ textDecoration: "none",color:"inherit" }}>Schedule</Link></div>  
+                    <div>{admin}</div>
+                    </div>
+                    <div className='content'> 
                          <form className='form' onSubmit={this.handleSubmit} >
                          <label htmlFor='Username'>Username</label>         
                                 <input id= 'username'type =' text' onChange={this.handleChange}/>

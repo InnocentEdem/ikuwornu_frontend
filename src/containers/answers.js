@@ -1,18 +1,21 @@
 
 import React, { Component } from 'react'; 
-class QonQuestions extends Component {
+class Answers extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
+
+   
 
     render() { 
        
         return ( 
             <div>
                
-                    {this.props.question}
-                
+                   
+                   { this.props.answer}
+               
 
             </div>
 
@@ -20,4 +23,4 @@ class QonQuestions extends Component {
     }
 }
  
-export default QonQuestions;
+export default Answers;
