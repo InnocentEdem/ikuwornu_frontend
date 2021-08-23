@@ -13,6 +13,7 @@ class Navbar extends Component {
     }
     logoutHandler(){
       localStorage.setItem('logout','true')
+      localStorage.setItem('userData','')
       this.setState({ redirect: "/login" });
   
   }

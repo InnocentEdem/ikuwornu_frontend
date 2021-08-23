@@ -49,3 +49,13 @@
     display: inline-block;
    
 }
+@media screen and (max-width: 620px) {
+    .menu{
+       display: none;
+    }
+    .main{
+        display: grid;
+        grid-template: 1fr 1fr/ 3fr;
+    }
+    
+  }

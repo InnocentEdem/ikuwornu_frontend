@@ -12,12 +12,15 @@ class QmForm extends Component {
     handleChange(event){
         let tag=event.target;
         this.setState({[tag.id]:[tag.value]})
+        console.log(this.state.name, this.state.pword);
     } 
 
     handleSubmit(e){
+        console.log('hi')
         let name =this.state.name[0];
-        let pwd = this.state.password[0];
-        console.log(name,pwd)
+        let pwd = this.state.pword[0];
+        console.log("name,pwd")
+       
         axios({
             method: 'post',
             url: 'http://localhost:3000/api/login',
@@ -27,7 +30,7 @@ class QmForm extends Component {
             },
             headers: {'Authorization': 'Bearer ...'}
           }).then(
-              resp=>{ this.props.jwtHandler(resp.data)   }  )
+              resp=>{this.props.jwtHandler(resp.data)   }  )
               .catch(e=> console.log(e))
         e.preventDefault()
     }
@@ -42,7 +45,7 @@ class QmForm extends Component {
                 <br></br>
                 <label htmlFor='password'>Password</label> 
                 <br></br>         
-                <input className='form-fields' type='password' id= 'password' onChange={this.handleChange} required /> 
+                <input className='form-fields' type='password' id= 'pword' onChange={this.handleChange} required /> 
                 <br></br>  
                 <input className='form-fields submit' type="submit" value="Submit" />
              </form>

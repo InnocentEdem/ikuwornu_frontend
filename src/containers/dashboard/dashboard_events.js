@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar/navbar';
 import './dashboard.css'
 import {Link} from 'react-router-dom';
 import './dashboard.css'
+import './dashboard_events.css'
 
 class DashboardEvents extends Component {
     constructor(props) {
@@ -11,10 +12,7 @@ class DashboardEvents extends Component {
         this.recordsObj=[];
         
         if(this.records!==null){
-            this.records.forEach((e,i)=>{
-            this.recordsObj.push( { date: e.date_created,
-                contestants:e.contestants, })
-        })
+         let recordsObj=this.records.map(e=> {const {date_created,contestants}=e})
         }
         this.state = {  }
       }
@@ -24,6 +22,11 @@ class DashboardEvents extends Component {
    }
 
     render(){ 
+        let admin;
+        if(JSON.parse(localStorage.getItem('userData')).isAdmin===true){
+            console.log('admin powers')
+        admin=<div><Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link></div>
+        }
         return ( 
             <div>
                <div className='Navbar' >
@@ -33,7 +36,7 @@ class DashboardEvents extends Component {
                    <div className='menu'>
                        <div><Link to ='/' style={{ textDecoration: "none",color:"inherit" }}>Create Quiz</Link></div>
                        <div><Link to ='/schedule' style={{ textDecoration: "none",color:"inherit" }}>Schedule</Link></div> 
-                       <div><Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link></div>
+                      {admin}
                    </div>
                    <div className='content'>
                        <table>

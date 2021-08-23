@@ -5,6 +5,7 @@ import './dashboard.css'
 import {Link} from 'react-router-dom'
 import './dashboard.css'
 import ConfirmOrCancel from './confirm';
+import './dashboard_create.css'
 
 
 class DashboardCreate extends Component {
@@ -32,6 +33,11 @@ class DashboardCreate extends Component {
         })
     }
     render() { 
+        let admin;
+        if(JSON.parse(localStorage.getItem('userData')).isAdmin===true){
+            console.log('admin powers')
+        admin=<div><Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link></div>
+        }
         let page;
         if( this.state.enterDetails){
             page= <CreateQuiz handleChildData={this.handleChildData}/>}
@@ -48,7 +54,7 @@ class DashboardCreate extends Component {
                    <div className='menu'>
                    <div><Link to ='/' style={{ textDecoration: "none",color:"inherit" }}>Create Quiz</Link></div>
                        <div><Link to ='/schedule' style={{ textDecoration: "none",color:"inherit" }}>Schedule</Link></div> 
-                       <div><Link to ='/admin_dashboard' style={{ textDecoration: "none",color:"inherit" }}>Add Qmaster</Link></div>
+                      {admin}
                    </div>
                    <div className='content'>
                       {page}         

@@ -95,8 +95,9 @@ class CreateQuiz extends Component {
             <div>
             <form className='form1' onSubmit={this.handleSubmit}  >                        
                                <div className="input-main">
-                               <label>UPLOAD Contestants</label>
+                               <div> <label>UPLOAD Contestants</label>
                                 <input type ='file' onChange={this.fileHandler1} required/>
+                                </div>
                                 <br></br>
                                 <label>UPLOAD Questions</label>
                                 <input type ='file' onChange={this.fileHandler2} required/>

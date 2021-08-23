@@ -42,7 +42,7 @@ class ConfirmOrCancel extends Component {
                 <div className='linksp'>
                 <div className="links"><Link to ='/livequiz' style={{ textDecoration: "none",color:"inherit" }}>Go Live </Link></div>
                 <div className="links"><Link to ='/' style={{ textDecoration: "none",color:"inherit" }}>Cancel </Link></div>
-                <div className="links"><Link to ='/scheduled' style={{ textDecoration: "none",color:"inherit" }}>Schedule</Link></div> 
+                <div className="links"><Link to ='/schedule' style={{ textDecoration: "none",color:"inherit" }}>Schedule</Link></div> 
                 </div>
             </div>
          );

@@ -13,6 +13,7 @@ ul li{
      box-shadow: 0 8px 6px -6px black;
      border: solid 1px rgba(128, 128, 128, 0.158);
      font-size: 0.9rem;
+     white-space: nowrap;
 }
 ul li:hover{
     background-color:  #3b5998 ;
@@ -21,4 +22,7 @@ ul li:hover{
     /* transition: color 2s; */
     
 
+}
+ul{
+    white-space: nowrap;
 }

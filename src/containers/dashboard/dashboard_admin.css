@@ -8,6 +8,9 @@ input{
 #submit{
     background-color: black;
 }
+#submit:hover{
+    cursor: pointer;
+}
 
 #password,#username{
     width: 15rem;

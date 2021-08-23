@@ -131,7 +131,7 @@ class  QuizOn extends Component {
                         score={e[1] } key={i.toString()} /> )}                 
                     </div>   
                     <div className="quiz-box">
-                        <div className='timer' ><div>{this.timer && <Timer countDown startTime={this.ansTime} />}</div></div>
+                        <div className='timer' ><div>TIMER:__</div><div>{this.timer && <Timer countDown startTime={this.ansTime} />}</div></div>
                         <div className="whoseturn">
                         {person}
                         </div>
