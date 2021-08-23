@@ -20,20 +20,8 @@ class App extends Component {
       authenticated:true
     })
    }
-   componentDidMount(){
-    if(localStorage.getItem('userData') !== null  || localStorage.getItem('userData') !== undefined){
-      let data=JSON.parse(localStorage.getItem('userData'))
-      this.setState({authenticated:true})
-    }
-  }
-  componentDidUpdate(prevProps,prevState){
-     if(this.state.authenticated===false){
-       if(localStorage.getItem('userData') !== null  || localStorage.getItem('userData') !== undefined){
-         let data=JSON.parse(localStorage.getItem('userData'))
-         this.setState({authenticated:true})
-       }
-     }
-  }
+   
+ 
   
    
   render() {
