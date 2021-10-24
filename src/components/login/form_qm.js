@@ -12,14 +12,12 @@ class QmForm extends Component {
     handleChange(event){
         let tag=event.target;
         this.setState({[tag.id]:[tag.value]})
-        console.log(this.state.name, this.state.pword);
     } 
 
     handleSubmit(e){
         console.log('hi')
         let name =this.state.name[0];
         let pwd = this.state.pword[0];
-        console.log("name,pwd")
        
         axios({
             method: 'post',

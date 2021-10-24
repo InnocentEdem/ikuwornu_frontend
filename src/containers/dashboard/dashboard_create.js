@@ -14,7 +14,22 @@ class DashboardCreate extends Component {
         this.state = {
             enterDetails:true,        
           }
+          if(!JSON.parse(localStorage.getItem("userData"))){
+              const userData={
+                  isAdmin:false
+              }
+              localStorage.setItem("userData", JSON.stringify(userData));
+          }
+          if(!localStorage.getItem("tempQuiz")){
+              const tempQuiz={
+                  isEmpty:true
+              }
+              localStorage.setItem("tempQuiz", JSON.stringify(tempQuiz))
+          }
           this.handleChildData=this.handleChildData.bind(this)
+    }
+    componentDidMount(){
+
     }
     handleChildData(newQuiz){
         localStorage.setItem("tempQuiz",JSON.stringify(newQuiz))

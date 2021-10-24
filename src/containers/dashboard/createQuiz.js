@@ -43,7 +43,8 @@ class CreateQuiz extends Component {
             number_of_questions:this.state.numQ,
             time_per_question:this.state.time,
             contestants:this.state.contestants,
-            questions:this.state.questions
+            questions:this.state.questions,
+            isEmpty:false
           }
           this.props.handleChildData(newQuiz);
 

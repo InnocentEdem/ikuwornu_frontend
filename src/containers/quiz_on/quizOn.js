@@ -12,28 +12,32 @@ class  QuizOn extends Component {
         super(props);    
  
         const quizData=localStorage.getItem('tempQuiz');
+        if(quizData.isEmpty===false){
         localStorage.setItem('newQuiz',quizData);
         this.newQuiz = JSON.parse(localStorage.getItem('newQuiz'));
         this.initialScores = this.newQuiz.contestants.map(e=>[e,0]);
         this.questions=this.newQuiz.questions;
         this.current=0;
-        this.totalQues = this.newQuiz.number_of_questions[0]
-        console.log('num',this.totalQues)
+        this.totalQues = this.newQuiz.number_of_questions[0];
         this.ansTime = +this.newQuiz.time_per_question;
         this.questionTracker=[0];
         this.quesOnly=this.questions.filter((e,i)=>i%2===0);
         this.answOnly=this.questions.filter((e,i)=>i%2===1);
         this.isHidden=true;
         this.timer=false;
+        }
         this.state = { }; 
          this.handleUpdate=this.handleUpdate.bind(this);
+         this.haveEvent=this.haveEvent.bind(this);
+         this.noEvent=this.noEvent.bind(this)
         }
     
 
      componentDidMount(){
-        console.log('[cdmount]');
+      
         const quizData=localStorage.getItem('tempQuiz');
-        localStorage.setItem('newQuiz',quizData);
+        if(quizData){
+            localStorage.setItem('newQuiz',quizData);
         const newQuiz = JSON.parse(localStorage.getItem('newQuiz'));
         let initialScores = newQuiz.contestants.map(e=>[e,0]);
          const min = newQuiz.min_question_point[0];
@@ -53,6 +57,7 @@ class  QuizOn extends Component {
             questionCounter:1,
             forceRender:0  
          })
+        }
      }
      componentDidUpdate(){
         
@@ -111,12 +116,49 @@ class  QuizOn extends Component {
       console.log(random)
       return random;
    }
+
+   noEvent(){
+       return(
+           <div>
+               <p>
+                   There is no event!
+               </p>
+           </div>
+       )
+   }
+   haveEvent(){
+        let person=<Contestant name={this.initialScores[this.current][0]}
+        score={this.initialScores[this.current][1]}/>
+       return(
+        <div className="main"> 
+        <div className="contestants" >
+            {this.initialScores.map((e,i)=><Contestant 
+            name={e[0] }
+            score={e[1] } key={i.toString()} /> )}                 
+        </div>   
+        <div className="quiz-box">
+            <div className='timer' ><div>TIMER:__</div><div>{this.timer && <Timer countDown startTime={this.ansTime} />}</div></div>
+            <div className="whoseturn">
+            {person}
+            </div>
+            <div className='question'>
+            <div className='question' ><span>Question: </span><QonQuestions question={this.currentQues}/></div>
+            <div className='question' ><span>Answer: </span>{!this.isHidden && <Answers  answer={this.currentAns} />}</div>
+        </div>
+        <div className="tools" ><QuizTools 
+                handleUpdate={this.handleUpdate}/>
+        </div>
+          
+        </div> 
+               
+     </div>
+       )
+   }
    
      
     render() {
        
-        let person=<Contestant name={this.initialScores[this.current][0]}
-        score={this.initialScores[this.current][1]}/>
+       
         return ( 
             <div>
                
@@ -124,28 +166,9 @@ class  QuizOn extends Component {
                 <div className='header' >
                     <Navbar/>  
                 </div>
-                <div className="main"> 
-                    <div className="contestants" >
-                        {this.initialScores.map((e,i)=><Contestant 
-                        name={e[0] }
-                        score={e[1] } key={i.toString()} /> )}                 
-                    </div>   
-                    <div className="quiz-box">
-                        <div className='timer' ><div>TIMER:__</div><div>{this.timer && <Timer countDown startTime={this.ansTime} />}</div></div>
-                        <div className="whoseturn">
-                        {person}
-                        </div>
-                        <div className='question'>
-                        <div className='question' ><span>Question: </span><QonQuestions question={this.currentQues}/></div>
-                        <div className='question' ><span>Answer: </span>{!this.isHidden && <Answers  answer={this.currentAns} />}</div>
-                    </div>
-                    <div className="tools" ><QuizTools 
-                            handleUpdate={this.handleUpdate}/>
-                    </div>
-                      
-                    </div> 
-                           
-                 </div>
+                {!this.quizData.isEmpty && this.haveEvent()}
+                {this.quizData.isEmpty && this.noEvent}
+                
             </div>
          );
     }

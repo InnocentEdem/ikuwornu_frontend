@@ -13,9 +13,10 @@
     "react-dropzone": "^11.3.4",
     "react-excel-renderer": "^1.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^3.4.4",
     "react.timer": "^2.1.0",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "webpack": "^4.42.0"
   },
   "scripts": {
     "start": "react-scripts start",

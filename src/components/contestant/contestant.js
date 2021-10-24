@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import {React, Component } from 'react';
 import './contestant.css';
 class Contestant extends Component {
     constructor(props) {
